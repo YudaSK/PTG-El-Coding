@@ -1,30 +1,38 @@
-import java.util.ArrayList; // Import ArrayList to store our employees
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
+public class PayrollSystem {
     public static void main(String[] args) {
+        // creating lists
+        List<Employee> employeeList = getEmployees();
 
-        // CHALLENGE REQUIREMENT: Use ArrayList<Employee> to process salaries
-        ArrayList<Employee> employeeList = new ArrayList<>();
+        System.out.println("=== Payroll Report ===");
 
-        // REQUIREMENT: Object Creation
-        // Creating specific objects but storing them in the list
-        FullTimeEmployee emp1 = new FullTimeEmployee("Ali", "FT001", "Manager", 5000.00);
-        PartTimeEmployee emp2 = new PartTimeEmployee("Bob", "PT001", "Clerk", 20.00, 50); // 50 hours
-        FullTimeEmployee emp3 = new FullTimeEmployee("Sarah", "FT002", "Developer", 4500.00);
+        for (Employee emp : employeeList) {
 
-        // Adding them to the list
-        employeeList.add(emp1);
-        employeeList.add(emp2);
-        employeeList.add(emp3);
+            emp.displayInfo();
 
-        System.out.println("=== PAYROLL SYSTEM REPORT ===");
+            double salary = emp.calculateSalary();
 
-        // POLYMORPHISM IN ACTION:
-        // We loop through the list of 'Employee'. We don't need to know if they are
-        // FullTime or PartTime. The code automatically finds the correct calculateSalary() method.
-        for (Employee e : employeeList) {
-            e.displayInfo(); // From Parent class
-            System.out.println("Monthly Salary: $" + e.calculateSalary()); // From Child class (Overridden)
+            System.out.println("Calculated Salary: $" + salary);
+            System.out.println("-------------------------");
         }
+    }
+
+    private static List<Employee> getEmployees() {
+        List<Employee> employeeList = new ArrayList<>();
+
+        //obj
+        FullTimeEmployee ft1 = new FullTimeEmployee("eza", 101, "IT", 5000, 1000, "Premium");
+        PartTimeEmployee pt1 = new PartTimeEmployee("aul", 102, "HR", 20, 100, "Morning");
+        PartTimeEmployee pt2 = new PartTimeEmployee("yuda", 103, "Marketing", 25, 80, "Night");
+        PartTimeEmployee pt3 = new PartTimeEmployee("falih", 104, "yes", 20, 95, "Morning");
+
+        //lists
+        employeeList.add(ft1);
+        employeeList.add(pt1);
+        employeeList.add(pt2);
+        employeeList.add(pt3);
+        return employeeList;
     }
 }
