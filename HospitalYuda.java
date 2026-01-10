@@ -4,7 +4,7 @@ import java.util.List;
 // 1. BASE CLASS (Parent) 
 // Represents general human data
 class Person {
-    // Attributes (Minimal 3 attributes per class) [cite: 17]
+    // Attributes (Minimal 3 attributes per class) 
     protected String id;
     protected String name;
     protected int age;
@@ -29,7 +29,7 @@ class Person {
 
 // 2. SUBCLASS 1 (Child) 
 // Inherits Person, adds Doctor logic
-class Doctor extends Person { // [cite: 10]
+class Doctor extends Person { 
     // Additional attributes
     private String department;
     private String specialization;
